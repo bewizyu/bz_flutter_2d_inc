@@ -9,23 +9,18 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // FIXME: To be removed, this is for testing the .nma asset is loaded
-    rootBundle.load("assets/testBZ.nma").then((ByteData data) {
-      debugPrint('DATA LOAD $data.runtimeType');
-    }).catchError((error) {
-      debugPrint('LOAD DATA ERROR, $error');
-    });
-
-    return Column(
-      children: <Widget>[
-        NimaActor("assets/testBZ",
-            alignment: Alignment.center,
-            fit: BoxFit.contain,
-            animation: "idle"),
-        Image.asset(
-          'assets/testBZ.png',
-        ),
-      ],
+    return MaterialApp(
+      home: Scaffold(
+          body: Column(children: [
+        Container(
+            width: 100,
+            height: 100,
+            child: NimaActor("assets/testBZ.nima",
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
+                animation: "Arm")),
+        Image.asset('assets/testBZ.png', width: 100, height: 100)
+      ])),
     );
   }
 }
